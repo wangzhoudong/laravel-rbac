@@ -21,6 +21,9 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerResources();
         $this->defineAssetPublishing();
         $this->registerMigrations();
+        $this->publishes([
+            __DIR__.'/../config/rbac.php' => config_path('rbac.php'),
+        ]);
     }
 
 
