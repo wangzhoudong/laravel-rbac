@@ -23,6 +23,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerMigrations();
         $this->publishes([
             __DIR__.'/../config/rbac.php' => config_path('rbac.php'),
+            'config'
         ]);
     }
 
