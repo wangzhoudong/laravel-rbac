@@ -2,6 +2,7 @@
 
 namespace Lwj\Rbac;
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -15,6 +16,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
+        Schema::defaultStringLength(191);
         $this->registerRoutes();
         $this->registerResources();
         $this->defineAssetPublishing();
