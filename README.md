@@ -22,6 +22,13 @@ Lwj\Rbac\ServiceProvider::class,
 ```
 **Laravel 5.5** uses Package Auto-Discovery, so doesn't require you to manually add the ServiceProvider.
 
+Add the middleware alias `routeMiddleware` array in `app/Http/Kernel.php`
+
+```bash
+'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
+'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
+```
+
 ### Config
 
 You can also publish the config file to change implementations (ie. interface to specific class) or set defaults for `--helpers` or `--sublime`.
