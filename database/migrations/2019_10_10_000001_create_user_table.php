@@ -53,7 +53,7 @@ class CreateUserTable extends Migration
             'email' => 'admin@liweijia.com',
             'avatar' => ''
         ]);
-        
+
         $user->password = '123456';
         $user->save();
     }
