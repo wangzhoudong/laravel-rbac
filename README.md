@@ -29,12 +29,19 @@ Add the middleware alias `routeMiddleware` array in `app/Http/Kernel.php`
 'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
 ```
 
+Generate the ENV option:
+
+```bash
+php artisan jwt:secret
+```
+
 ### Config
 
 You can also publish the config file to change implementations (ie. interface to specific class) or set defaults for `--helpers` or `--sublime`.
 
 ```bash
 php artisan vendor:publish --provider="Lwj\Rbac\ServiceProvider" --tag=config
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 ```
 
 ### Migration
