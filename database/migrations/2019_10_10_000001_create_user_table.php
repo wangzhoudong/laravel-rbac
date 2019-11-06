@@ -51,7 +51,8 @@ class CreateUserTable extends Migration
             'nickname' => '管理员',
             'mobile' => '13000000000',
             'email' => 'admin@liweijia.com',
-            'avatar' => ''
+            'avatar' => '',
+            'password' => ''
         ]);
 
         $user->password = '123456';
