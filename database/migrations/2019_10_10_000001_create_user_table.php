@@ -25,7 +25,12 @@ class CreateUserTable extends Migration
                 $table->dateTime('created_at')->nullable();
                 $table->dateTime('updated_at')->nullable();
                 $table->softDeletes();
+
+                $table->unique('mobile');
+                $table->unique('email');
             });
+
+            $this->initUser();
         }
     }
 
@@ -37,5 +42,19 @@ class CreateUserTable extends Migration
     public function down()
     {
         Schema::drop('rbac_user');
+    }
+
+    private function initUser()
+    {
+        $user = \Lwj\Rbac\Models\User::query()->create([
+            'name' => '管理员',
+            'nickname' => '管理员',
+            'mobile' => '13000000000',
+            'email' => 'admin@liweijia.com',
+            'avatar' => ''
+        ]);
+        
+        $user->password = '123456';
+        $user->save();
     }
 }
