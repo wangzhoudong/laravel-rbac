@@ -46,7 +46,7 @@ php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServicePro
 
 Inside the config/auth.php file you will need to make a few changes to configure Laravel to use the jwt guard to power your application authentication.
 
-Make the following changes to the file:
+Make the following changes to the file 'config/auth':
 
 ```bash
 use Lwj\Rbac\Models\User;
