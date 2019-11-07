@@ -44,6 +44,41 @@ php artisan vendor:publish --provider="Lwj\Rbac\ServiceProvider" --tag=config
 php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 ```
 
+Inside the config/auth.php file you will need to make a few changes to configure Laravel to use the jwt guard to power your application authentication.
+
+Make the following changes to the file:
+
+```bash
+use Lwj\Rbac\Models\User;
+```
+
+And change the array:
+
+```bash
+'defaults' => [
+    'guard' => 'api',
+    'passwords' => 'users',
+],
+
+...
+
+'guards' => [
+    'api' => [
+        'driver' => 'jwt',
+        'provider' => 'users',
+    ],
+],
+
+...
+
+'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => User::class,
+        ],
+    ],
+```
+
 ### Migration
 
 You can also migrate tables and base data:
@@ -63,8 +98,7 @@ password: 123456
 
 'SUPER_ADMIN' env option to set super admin in this system:
 if you want to add new super admin,you can use '|' separator
-
-e.g: 
+ 
 ```bash
-SUPER_ADMIN=admin@liweijia.com|test@liweijia.com
+eg:SUPER_ADMIN=admin@liweijia.com|test@liweijia.com
 ```
