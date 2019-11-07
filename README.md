@@ -51,3 +51,20 @@ You can also migrate tables and base data:
 ```bash
 php artisan migrate
 ```
+
+### User
+
+Default User:
+
+```bash
+name: admin@liweijia.com
+password: 123456
+```
+
+'SUPER_ADMIN' env option to set super admin in this system:
+if you want to add new super admin,you can use '|' separator
+
+e.g: 
+```bash
+SUPER_ADMIN=admin@liweijia.com|test@liweijia.com
+```
