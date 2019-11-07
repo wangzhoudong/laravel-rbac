@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Arr;
+use Lwj\Rbac\Exceptions\UniqueException;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
@@ -35,7 +36,7 @@ class User extends Authenticatable implements JWTSubject
     protected $primaryKey = 'id';
 
     protected $guarded = [
-        'password'
+
     ];
 
     /**
@@ -96,5 +97,25 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($user) {
+            // 判断email是否已经存在了
+            $res = static::query()->where('email', '=', $user->email)->count();
+            if ($res > 0) {
+                throw new UniqueException("已经有{$user->email}这个邮箱了");
+            }
+            // 判断mobile是否已经存在了
+            $res = static::query()->where('mobile', '=', $user->mobile)->count();
+            if ($res > 0) {
+                throw new UniqueException("已经有{$user->mobile}这个手机号了");
+            }
+
+            // 处理密码
+            $user->password = Hash::make($user->password);
+        });
     }
 }

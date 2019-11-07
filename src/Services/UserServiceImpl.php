@@ -16,9 +16,8 @@ class UserServiceImpl
     public function create(array $data)
     {
         $user = User::query()->create($data);
-        $user->password = $data['password'];
 
-        return $user->save();
+        return $user;
     }
 
     /**
