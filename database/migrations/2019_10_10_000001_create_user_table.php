@@ -21,7 +21,7 @@ class CreateUserTable extends Migration
                 $table->char('mobile', 16)->comment('手机号');
                 $table->string('email')->default('')->comment('邮箱');
                 $table->string('password')->default('')->comment('密码');
-                $table->string('avatar')->comment('头像');
+                $table->string('avatar')->default('')->comment('头像');
                 $table->dateTime('created_at')->nullable();
                 $table->dateTime('updated_at')->nullable();
                 $table->softDeletes();
