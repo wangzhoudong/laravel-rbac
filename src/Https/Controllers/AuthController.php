@@ -42,7 +42,7 @@ class AuthController extends Controller
             throw new UnauthorizedHttpException('jwt-auth', '请填写邮箱或手机');
         }
 
-        if (! $token = auth('api')->attempt($credentials)) {
+        if (! $token = auth('rbac')->attempt($credentials)) {
             throw new UnauthorizedHttpException('jwt-auth', '用户名或密码不正确');
         }
 
@@ -56,7 +56,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return $this->success(auth()->user());
+        return $this->success(auth('rbac')->user());
     }
 
     /**
@@ -66,7 +66,7 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        auth()->logout();
+        auth('rbac')->logout();
 
         return $this->success(['message' => 'Successfully logged out']);
     }
@@ -78,7 +78,7 @@ class AuthController extends Controller
      */
     public function refresh()
     {
-        return $this->respondWithToken(auth()->refresh());
+        return $this->respondWithToken(auth('rbac')->refresh());
     }
 
     /**

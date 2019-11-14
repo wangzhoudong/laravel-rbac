@@ -103,17 +103,6 @@ class User extends Authenticatable implements JWTSubject
     {
         parent::boot();
         static::creating(function ($user) {
-            // 判断email是否已经存在了
-            $res = static::query()->where('email', '=', $user->email)->count();
-            if ($res > 0) {
-                throw new UniqueException("已经有{$user->email}这个邮箱了");
-            }
-            // 判断mobile是否已经存在了
-            $res = static::query()->where('mobile', '=', $user->mobile)->count();
-            if ($res > 0) {
-                throw new UniqueException("已经有{$user->mobile}这个手机号了");
-            }
-
             // 处理密码
             $user->password = Hash::make($user->password);
         });

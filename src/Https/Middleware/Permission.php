@@ -28,7 +28,7 @@ class Permission
     public function handle($request, $next)
     {
         // 获取user
-        $user = auth()->user();
+        $user = auth('rbac')->user();
 
         if ($this->userService->checkSuperAdmin()) {
             return $next($request);
