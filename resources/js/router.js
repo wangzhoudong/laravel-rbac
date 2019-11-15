@@ -7,8 +7,7 @@ const routes = [
     {
         path: '*',
         redirect: '/dashboard'
-    },
-    {
+    }, {
         path: '/dashboard',
         name: 'dashboard',
         component: require('./pages/dashboard').default,
@@ -31,8 +30,7 @@ const routes = [
         meta: {
             title: '角色管理'
         }
-    }
-    ,
+    },
     {
         path: '/menu',
         name: 'menu',
