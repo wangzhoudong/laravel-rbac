@@ -63,10 +63,15 @@ And change the array:
 ...
 
 'guards' => [
+    ...,
     'api' => [
-        'driver' => 'jwt',
+        'driver' => 'token',
         'provider' => 'users',
     ],
+    'rbac' => [
+        'driver' => 'jwt',
+        'provider' => 'users',
+    ]
 ],
 
 ...

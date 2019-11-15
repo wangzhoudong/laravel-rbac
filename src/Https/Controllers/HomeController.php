@@ -15,7 +15,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('laravel-rbac::' . $request->route()->parameter('view', 'role'), [
+        return view('laravel-rbac::home'  , [
             'abc' =>'这是一个模板变量',
         ]);
     }
