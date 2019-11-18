@@ -23,7 +23,6 @@ mix.options({
 })
     .setPublicPath('public')
     .js('resources/js/app.js', 'public').sourceMaps()
-    .copy('public/fonts', './public/vendor/rbac/fonts')
     // .sass('resources/sass/app.scss', 'public')
     // .sass('resources/sass/app-dark.scss', 'public')
     // .version()

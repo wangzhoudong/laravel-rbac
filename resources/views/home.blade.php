@@ -7,7 +7,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="">
     <title>RBAC{{ config('app.name') ? ' - ' . config('app.name') : '' }}</title>
-
+    <style>
+        @font-face{font-family:element-icons;src:url({{asset('/vendor/rbac/fonts/vendor/element-ui/lib/theme-chalk/element-icons.woff')}}) format("woff"),url({{asset('/vendor/rbac/fonts/vendor/element-ui/lib/theme-chalk/element-icons.ttf')}}) format("truetype");}
+    </style>
 </head>
 <body>
 <div id="app" v-cloak>

@@ -107,3 +107,7 @@ if you want to add new super admin,you can use '|' separator
 ```bash
 eg:SUPER_ADMIN=admin@liweijia.com|test@liweijia.com
 ```
+
+
+进入docker之后
+ln -sf /var/www/html/pay-php/service2/packages/laravel-rbac/public /var/www/html/pay-php/service2/public/vendor/rbac
