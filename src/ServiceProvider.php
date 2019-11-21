@@ -72,7 +72,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->publishes([
             RABC_PATH.'/public' => public_path('vendor/rabc'),
-        ], 'rbac-assets');
+        ], 'assets');
     }
 
     /**
@@ -96,38 +96,6 @@ class ServiceProvider extends BaseServiceProvider
         if (! defined('RABC_PATH')) {
             define('RABC_PATH', realpath(__DIR__.'/../'));
         }
-
-        $this->configure();
-        $this->offerPublishing();
     }
-
-    /**
-     * Setup the configuration for Horizon.
-     *
-     * @return void
-     */
-    protected function configure()
-    {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/rbac.php', 'laravel-rbac'
-        );
-    }
-
-    /**
-     * Setup the resource publishing groups
-     *
-     * @return void
-     */
-    protected function offerPublishing()
-    {
-        if ($this->app->runningInConsole()) {
-
-            $this->publishes([
-                __DIR__.'/../config/rbac.php' => config_path('rbac.php'),
-            ], 'laravel-rbac-config');
-        }
-    }
-
-
 
 }
