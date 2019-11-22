@@ -70,7 +70,7 @@ class ServiceProvider extends BaseServiceProvider
     public function defineAssetPublishing()
     {
         $this->publishes([
-            RABC_PATH.'/public' => public_path('vendor/rabc'),
+            RABC_PATH.'/public' => public_path('vendor/rbac'),
         ], 'assets');
     }
 
