@@ -13,7 +13,7 @@
 </head>
 <body>
 <div id="app" v-cloak>
-    <el-menu  class="el-menu-demo"  mode="horizontal">
+    <el-menu v-if="$route.fullPath !== '/login'" class="el-menu-demo"  mode="horizontal">
         <el-menu-item @click="$router.push('/user');"  index="1">用户管理</el-menu-item>
         <el-menu-item @click="$router.push('/role');" index="2">角色管理</el-menu-item>
         <el-menu-item @click="$router.push('/menu');" index="3">菜单管理</el-menu-item>

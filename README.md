@@ -41,6 +41,7 @@ You can also publish the config file to change implementations (ie. interface to
 
 ```bash
 php artisan vendor:publish --provider="Lwj\Rbac\ServiceProvider" --tag=config
+php artisan vendor:publish --provider="Lwj\Rbac\ServiceProvider" --tag=assets
 php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 ```
 

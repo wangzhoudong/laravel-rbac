@@ -5,6 +5,14 @@ Vue.use(Router);
 
 const routes = [
     {
+        path: '/login',
+        name: 'login',
+        component: require('./pages/login/index').default,
+        meta: {
+            title: '登录'
+        }
+    },
+    {
         path: '*',
         redirect: '/dashboard'
     }, {

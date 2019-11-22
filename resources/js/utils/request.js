@@ -4,7 +4,7 @@
  */
 import axios from 'axios'
 import { Message } from 'element-ui'
-import router from '@/router'
+import { router } from '../router'
 
 /**
  * 提示函数
@@ -28,6 +28,11 @@ const tip = response => {
   })
 }
 
+const toLogin = () => {
+    // window.location.href = '/api/login?returnUrl=' + encodeURIComponent(window.location.href)
+    // const path = router.currentRoute.path
+    router.push({ path: '/login' })
+}
 
 /**
  * 请求失败后的错误统一处理
@@ -39,7 +44,8 @@ const errorHandle = (status, response) => {
   switch (status) {
     // 401: 未登录状态，跳转登录页
     case 401:
-      tip('无权访问！！！ 401 ')
+      // tip('无权访问！！！ 401 ')
+        toLogin()
       break
     // 403 token过期
     // 清除token并跳转登录页

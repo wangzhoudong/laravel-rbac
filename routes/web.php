@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group([
-    'prefix' => 'api'
+    'prefix' => 'api',
+    'middleware' => config('rbac.middleware', 'api'),
 ], function () {
     Route::get('/menu/all', 'MenuController@getAll');
     Route::put('/menu/{id}/apis', 'MenuController@bindApi');
