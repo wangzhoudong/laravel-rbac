@@ -22,7 +22,7 @@ class MenuServiceImpl
      */
     public function get(array $search = [])
     {
-        return Menu::query()->cursor();
+        return Menu::query()->get();
     }
 
     /**
