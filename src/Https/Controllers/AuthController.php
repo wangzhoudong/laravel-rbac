@@ -34,6 +34,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only(['password']);
+
         if ($request->has('email')) {
             $credentials['email'] = $request->input('email');
         } else if ($request->has('mobile')) {
@@ -90,10 +91,11 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+
         return $this->success([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth('api')->factory()->getTTL() * 60
+            'expires_in' => auth('rbac')->factory()->getTTL() * 60
         ]);
     }
 }
