@@ -5,6 +5,7 @@
 import axios from 'axios'
 import { Message } from 'element-ui'
 import { router } from '../router'
+import Cookies from 'js-cookie'
 
 /**
  * 提示函数
@@ -82,6 +83,10 @@ if (token) {
 // 添加请求拦截器
 instance.interceptors.request.use(function(config) {
   // 在发送请求之前做些什么
+    if (Cookies.get('TOKEN')) {
+        const token = Cookies.getJSON('TOKEN')
+        config.headers.common['Authorization'] = `Bearer ${token.access_token}`
+    }
   return config
 }, function(error) {
   // 对请求错误做些什么
