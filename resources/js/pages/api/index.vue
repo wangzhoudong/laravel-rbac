@@ -118,7 +118,8 @@ export default {
     },
     update(index, row) {
       this.id = row.id
-      this.$store.commit('api/SET_FORM_PROPS', { visible: true, name: '编辑' })
+        this.$store.dispatch('api/getDetail', { id: this.id })
+        this.$store.commit('api/SET_FORM_PROPS', { visible: true, name: '编辑' })
     },
     remove(index, row) {
       const { id } = row

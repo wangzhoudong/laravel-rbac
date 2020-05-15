@@ -2,24 +2,24 @@ import request from '../utils/request'
 
 export default {
   query: (params = {}) => {
-    return request.get('/rbac/api/api', { params })
+    return request.get('/api/rbac/api', { params })
   },
   get: (params = {}) => {
-    return request.get('/rbac/api/api/all', { params })
+    return request.get('/api/rbac/api/all', { params })
   },
   append: (params) => {
-    return request.post('/rbac/api/api', params)
+    return request.post('/api/rbac/api', params)
   },
   update: (id, params) => {
-    return request.put(`/rbac/api/api/${id}`, params)
+    return request.put(`/api/rbac/${id}`, params)
   },
   remove: (id) => {
-    return request.delete(`/rbac/api/api/${id}`, {})
+    return request.delete(`/api/rbac/api/${id}`, {})
   },
   find: (id) => {
-    return request.get(`/rbac/api/api/${id}`)
+    return request.get(`/api/rbac/api/${id}`)
   },
   getModules: () => {
-    return request.get(`/rbac/api/api/modules`)
+      return request.get(`/api/rbac/api/modules`)
   }
 }

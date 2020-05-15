@@ -16,6 +16,8 @@ return [
 
     'path' => 'rbac',
 
+    'apiPath' => 'api/rbac',
+
     /*
     | 设置独立的Middleware
     |

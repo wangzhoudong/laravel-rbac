@@ -85,9 +85,7 @@ export default {
         this.$store.dispatch('api/getModules')
         const id = this.id || 0
         if (id && id > 0) {
-          this.$api.api.find(id).then(({ data }) => {
-            this.form = data
-          })
+
         }
       }
     }

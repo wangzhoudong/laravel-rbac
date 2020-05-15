@@ -1,4 +1,5 @@
 import api from '../../api/api'
+import role from "../../api/role";
 
 const state = {
   list: {},
@@ -33,6 +34,18 @@ const actions = {
       })
     })
   },
+getDetail({ commit }, params = {}) {
+    const { id } = params
+    if (!id) {
+        throw new Error('没有传入ID')
+    }
+    return new Promise(resolve => {
+        api.find(id).then(({ data }) => {
+            commit('SET_FORM_PROPS', { item: data })
+            resolve(data)
+        })
+    })
+},
   getModules({ commit }) {
     return new Promise((resolve, reject) => {
       api.getModules().then(({ data }) => {

@@ -49,7 +49,13 @@ class ServiceProvider extends BaseServiceProvider
         ], function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         });
-
+        Route::group([
+            'domain' => config('rbac.domain', null),
+            'prefix' => config('rbac.apiPath'),
+            'namespace' => 'Lwj\Rbac\Https\Controllers',
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
+        });
     }
 
     /**
