@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 Route::group([
     'prefix' => 'api',
     'middleware' => config('rbac.middleware', 'api'),
@@ -25,5 +26,4 @@ Route::group([
     Route::resource('/api', 'ApiController');
     Route::resource('/user', 'UserController');
 });
-
 Route::get('/{view?}', 'HomeController@index')->where('view', '(.*)')->name('rabc.index');

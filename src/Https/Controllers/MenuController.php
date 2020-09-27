@@ -22,10 +22,7 @@ class MenuController extends Controller
 
     public function index(UserServiceImpl $userService, MenuServiceImpl $menuService)
     {
-        $userId = auth()->id();
-        if (! $userId) {
-            return [];
-        }
+        $userId = auth('rbac')->id();
 
         if ($userService->checkSuperAdmin()) {
             return $menuService->get();
@@ -48,6 +45,9 @@ class MenuController extends Controller
 
     public function update($id, Request $request, MenuServiceImpl $menuService)
     {
+        if (config('app.env') !== 'local') {
+            throw new \Exception('只允许开发环境执行');
+        }
         return $menuService->update($id, $request->all());
     }
 
@@ -59,11 +59,17 @@ class MenuController extends Controller
      */
     public function store(Request $request, MenuServiceImpl $menuService)
     {
+        if (config('app.env') !== 'local') {
+            throw new \Exception('只允许开发环境执行');
+        }
         return $menuService->create($request->all());
     }
 
     public function destroy($id, MenuServiceImpl $menuService)
     {
+        if (config('app.env') !== 'local') {
+            throw new \Exception('只允许开发环境执行');
+        }
         return $menuService->destroy($id);
     }
 

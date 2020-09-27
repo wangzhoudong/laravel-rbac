@@ -7,6 +7,7 @@ namespace Lwj\Rbac\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Collection;
 
 /**
@@ -29,12 +30,40 @@ use Illuminate\Support\Collection;
  */
 class Menu extends Model
 {
+    use SoftDeletes;
     protected $table = 'rbac_menus';
 
     protected $primaryKey = 'id';
 
     protected $guarded = [
 
+    ];
+
+    /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @param  \DateTimeInterface  $date
+     * @return string
+     */
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * 可以被集体附值的表的字段
+     */
+    protected $fillable = [
+        'pid',
+        'url',
+        'name',
+        'path',
+        'sort',
+        'deep',
+        'root_id',
+        'ico',
+        'show',
+        'remark'
     ];
 
     /**

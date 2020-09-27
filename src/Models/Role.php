@@ -30,6 +30,25 @@ class Role extends Model
     ];
 
     /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @param  \DateTimeInterface  $date
+     * @return string
+     */
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+
+    /**
+     * 可以被集体附值的表的字段
+     */
+    protected $fillable = [
+        'name',
+        'level',
+        'mark'
+    ];
+    /**
      * @param Builder $query
      * @param array $search
      * @return mixed
@@ -45,6 +64,6 @@ class Role extends Model
 
     public function menus()
     {
-        return $this->belongsToMany(Menu::class, 'rbac_role_menu', 'role_id', 'menu_id');
+        return $this->belongsToMany(Menu::class, 'rbac_role_menu', 'role_id', 'menu_id')->orderBy('sort', 'DESC');
     }
 }

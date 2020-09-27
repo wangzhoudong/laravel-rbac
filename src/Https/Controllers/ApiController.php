@@ -44,16 +44,25 @@ class ApiController extends Controller
 
     public function update($id, Request $request, ApiServiceImpl $apiService)
     {
+        if (config('app.env') !== 'local') {
+            throw new \Exception('只允许开发环境执行');
+        }
         return $this->success($apiService->update($id, $request->all()));
     }
 
     public function store(Request $request, ApiServiceImpl $apiService)
     {
+        if (config('app.env') !== 'local') {
+            throw new \Exception('只允许开发环境执行');
+        }
         return $this->success($apiService->create($request->all()));
     }
 
     public function destroy($id, ApiServiceImpl $apiService)
     {
+        if (config('app.env') !== 'local') {
+            throw new \Exception('只允许开发环境执行');
+        }
         return $this->success($apiService->destroy($id));
     }
 

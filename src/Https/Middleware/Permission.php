@@ -27,19 +27,20 @@ class Permission
      */
     public function handle($request, $next)
     {
+        if(!auth('rbac')->check()) {
+            return response('没有登录', 401);
+        }
         // 获取user
         $user = auth('rbac')->user();
 
         if ($this->userService->checkSuperAdmin()) {
             return $next($request);
         }
-
         // 获取所有API
         $apis = $this->userService->getBindApis($user->id);
-
         // 获取当前访问的api
         $apis = $apis->filter(function ($api) use ($request) {
-            return $request->is($api->path);
+            return $request->is(ltrim($api->path,'/'));
         });
 
         // 判断请求方式

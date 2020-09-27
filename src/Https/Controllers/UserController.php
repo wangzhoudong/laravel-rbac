@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function index(Request $request, UserServiceImpl $userService)
     {
-        return $userService->paginate($request->except(['page', 'limit']), $request->input('page', 1), $request->input('limit', 10));
+        return $userService->paginate($request->except(['start', 'limit']), $request->input('start', 1), $request->input('limit', 10));
     }
 
     /**
@@ -78,6 +78,7 @@ class UserController extends Controller
      * @param $id
      * @param UserServiceImpl $userService
      * @return JsonResponse
+     * @throws \Exception
      */
     public function destroy($id, UserServiceImpl $userService)
     {

@@ -17,8 +17,8 @@ trait BindData
     public function getBindApis($id)
     {
         $menus = $this->getBindMenus($id);
-        $menus->load('apis');
 
+//        $menus->load('acd pis');
         $apis = $menus->map(function ($item) {
             return $item->apis;
         });

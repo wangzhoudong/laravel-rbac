@@ -35,9 +35,24 @@ class User extends Authenticatable implements JWTSubject
 
     protected $primaryKey = 'id';
 
+    public $incrementing = false;
+
+    protected $keyType = 'string';
+
     protected $guarded = [
 
     ];
+
+    /**
+     * Prepare a date for array / JSON serialization.
+     *
+     * @param  \DateTimeInterface  $date
+     * @return string
+     */
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
 
     /**
      * 输出时需要隐藏的字段
